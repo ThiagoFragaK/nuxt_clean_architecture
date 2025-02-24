@@ -1,29 +1,19 @@
 <template>
     <div>
+        <Navbar />
         <NuxtRouteAnnouncer />
+        <ProductsListComponent />
     </div>
 </template>
 
 <script>
-    import FakerService from "@/services/FakerService.js";
+    import ProductsListComponent from "@/components/products/ProductsListComponent.vue";
+    import Navbar from "@/components/global/NavbarComponent.vue";
+
     export default {
-        methods: {
-            getProducts() {
-                FakerService.getAllProducts()
-                    .then((response) => {
-                        console.log(response);
-                    });
-            },
-            getProductByID(productID) {
-                FakerService.getProductByID(productID)
-                    .then((response) => {
-                        console.log(response);
-                    });
-            },
+        components: {
+            ProductsListComponent,
+            Navbar
         },
-        mounted() {
-            this.getProducts();
-            this.getProductByID(5);
-        }
     }
 </script>
